@@ -1,0 +1,39 @@
+<div class="well well-lg">
+    <p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+</div>
+<div class="well well-sm">
+<p>
+  <strong>Post:</strong>
+  <%= @post.body %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @post.user.id %>
+</p>
+</div>
+<div class="well well-sm"></div>
+    <%= bootstrap_form_for @comment, url: comments_post_path(@post) do |f| %>
+    <%= f.text_area :body, label: "Comment Here" %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+</div>
+
+<div class="well well-lg">
+
+<h4><div class="well well-sm">Comments</div> </h4>
+<% @post.comments.each do |comment| %>
+
+<ul class="list-group">
+  <li class="list-group-item"> <%= comment.body %> </li>
+  <li class="list-group-item"><%= comment.user.id %></li>
+    <hr/>
+    <% end %>
+  </ul>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

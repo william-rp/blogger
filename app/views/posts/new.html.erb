@@ -1,0 +1,8 @@
+<div class="container">
+    <%= bootstrap_form_for(@post) do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :body %>
+  <%= f.select :published, [[true, "Yes"], [false, "No"]], { label: "Would you like to publish now?" } %>
+  <%= f.submit "Save" %>
+<% end %>
+</div>
